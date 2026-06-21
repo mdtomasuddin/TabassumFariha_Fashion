@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { primary: { '50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12' } } } } }
+  </script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}</style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- NAVBAR                                         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fa-solid fa-bars text-2xl text-gray-700"></i>
+        </button>
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-1">
+          <span class="text-2xl lg:text-3xl font-extrabold text-primary-600">Tabassum</span>
+          <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">Fashion</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+          <a href="index.html" class="hover:text-primary-600 transition pb-1">Home</a>
+          <a href="shop.html" class="hover:text-primary-600 transition pb-1">Shop</a>
+          <a href="index.html#categories" class="hover:text-primary-600 transition pb-1">Categories</a>
+          <a href="about.html" class="hover:text-primary-600 transition pb-1">About</a>
+          <a href="contact.html" class="hover:text-primary-600 transition pb-1">Contact</a>
+        </div>
+
+        <!-- Right Icons -->
+        <div class="flex items-center gap-4 lg:gap-6">
+          <a href="login.html" class="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition">
+            <i class="fa-regular fa-user text-lg text-gray-700"></i>
+          </a>
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-regular fa-heart text-lg text-gray-700"></i>
+            <span class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="cart.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-solid fa-cart-shopping text-lg text-gray-700"></i>
+            <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="login.html" class="hidden lg:block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">Login</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 px-4 bg-primary-50 text-primary-600 rounded-lg font-medium">Home</a>
+        <a href="shop.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Shop</a>
+        <a href="index.html#categories" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Categories</a>
+        <a href="about.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">About</a>
+        <a href="contact.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Contact</a>
+        <hr class="my-2">
+        <a href="login.html" class="block py-2 px-4 text-primary-600 font-medium"><i class="fa-regular fa-user mr-2"></i>Login / Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <section class="bg-gray-50 border-b py-4">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <a href="index.html" class="hover:text-primary-600">Home</a> <i class="fa-solid fa-chevron-right text-xs"></i>
+        <a href="shop.html" class="hover:text-primary-600">Shop</a> <i class="fa-solid fa-chevron-right text-xs"></i>
+        <span class="text-gray-900 font-medium" id="breadcrumbName">Product</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Detail -->
+  <section class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
+
+        <!-- Gallery -->
+        <div>
+          <div class="aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 mb-4">
+            <img id="mainImage" src="" class="w-full h-full object-cover" alt="Product">
+          </div>
+          <div class="grid grid-cols-4 gap-3" id="thumbnails"></div>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <p id="productCategory" class="text-primary-600 font-semibold text-sm tracking-widest uppercase"></p>
+          <h1 id="productName" class="text-3xl lg:text-4xl font-extrabold text-gray-900 mt-2"></h1>
+          
+          <div class="flex items-center gap-2 mt-4" id="ratingDisplay"></div>
+          
+          <div class="flex items-center gap-3 mt-6">
+            <span id="productPrice" class="text-3xl font-extrabold text-gray-900"></span>
+            <span id="productOldPrice" class="text-xl text-gray-400 line-through"></span>
+          </div>
+
+          <p id="productDescription" class="text-gray-600 mt-6 leading-relaxed"></p>
+
+          <!-- Size Selector -->
+          <div class="mt-8">
+            <h3 class="font-bold mb-3">Size</h3>
+            <div class="flex flex-wrap gap-3" id="sizeSelector">
+              <button class="size-option px-6 py-3 border-2 border-gray-200 rounded-xl font-medium hover:border-primary-600 hover:text-primary-600 transition" data-size="S">S</button>
+              <button class="size-option px-6 py-3 border-2 border-gray-200 rounded-xl font-medium hover:border-primary-600 hover:text-primary-600 transition" data-size="M">M</button>
+              <button class="size-option px-6 py-3 border-2 border-primary-600 bg-primary-50 text-primary-600 rounded-xl font-medium" data-size="L">L</button>
+              <button class="size-option px-6 py-3 border-2 border-gray-200 rounded-xl font-medium hover:border-primary-600 hover:text-primary-600 transition" data-size="XL">XL</button>
+              <button class="size-option px-6 py-3 border-2 border-gray-200 rounded-xl font-medium hover:border-primary-600 hover:text-primary-600 transition" data-size="XXL">XXL</button>
+            </div>
+          </div>
+
+          <!-- Quantity -->
+          <div class="mt-8">
+            <h3 class="font-bold mb-3">Quantity</h3>
+            <div class="flex items-center gap-4">
+              <button onclick="changeQty(-1)" class="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-primary-600 transition text-xl font-bold">-</button>
+              <span id="qtyDisplay" class="text-2xl font-bold w-12 text-center">1</span>
+              <button onclick="changeQty(1)" class="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-primary-600 transition text-xl font-bold">+</button>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <button onclick="addToCartFromDetail()" class="flex-1 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button onclick="buyNow()" class="flex-1 bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-bolt"></i> Buy Now
+            </button>
+            <button onclick="toggleWishlist()" class="w-14 h-14 border-2 border-gray-200 rounded-full flex items-center justify-center hover:border-red-400 transition">
+              <i class="fa-regular fa-heart text-xl text-gray-600"></i>
+            </button>
+          </div>
+
+          <!-- Features -->
+          <div class="mt-10 grid grid-cols-2 gap-4 bg-gray-50 rounded-2xl p-6">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-truck-fast text-primary-600 text-xl"></i>
+              <span class="text-sm font-medium">Free Shipping ৳1000+</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-rotate-left text-green-600 text-xl"></i>
+              <span class="text-sm font-medium">7 Days Return</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-shield-halved text-blue-600 text-xl"></i>
+              <span class="text-sm font-medium">Secure Payment</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-award text-purple-600 text-xl"></i>
+              <span class="text-sm font-medium">Premium Quality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-12 lg:py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <h2 class="text-3xl font-extrabold mb-8">Customer Reviews</h2>
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-6">
+          <div class="flex items-center gap-1 text-yellow-400"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-gray-600 mt-3">"Amazing quality! The fabric is super soft and the fit is perfect. Highly recommend!"</p>
+          <div class="flex items-center gap-3 mt-4">
+            <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center font-bold">S</div>
+            <div><p class="font-semibold">Shakib</p><p class="text-gray-400 text-sm">2 days ago</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6">
+          <div class="flex items-center gap-1 text-yellow-400"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-gray-600 mt-3">"Great product! Delivery was fast and the packaging was excellent. Will order again."</p>
+          <div class="flex items-center gap-3 mt-4">
+            <div class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center font-bold">N</div>
+            <div><p class="font-semibold">Nadia</p><p class="text-gray-400 text-sm">5 days ago</p></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6">
+          <div class="flex items-center gap-1 text-yellow-400"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+          <p class="text-gray-600 mt-3">"Very good product for the price. Color matches the photos. A bit large, size down."</p>
+          <div class="flex items-center gap-3 mt-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-bold">R</div>
+            <div><p class="font-semibold">Rafi</p><p class="text-gray-400 text-sm">1 week ago</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- FOOTER                                         -->
+  <!-- ════════════════════════════════════════════════ -->
+  <footer class="bg-gray-900 text-white pt-16 lg:pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+
+        <!-- Brand -->
+        <div class="col-span-2 md:col-span-3 lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1">
+            <span class="text-3xl font-extrabold text-primary-500">Tabassum</span>
+            <span class="text-3xl font-extrabold text-white">Fashion</span>
+          </a>
+          <p class="text-gray-400 mt-4 max-w-sm leading-relaxed">
+            বাংলাদেশের সেরা ফ্যাশন ব্র্যান্ড। প্রিমিয়াম কোয়ালিটির টি-শার্ট, পোলো, শার্ট — সব এক জায়গায়। গ্রাহক সন্তুষ্টিই আমাদের মূল লক্ষ্য।
+          </p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-sky-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Shop -->
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">SHOP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="shop.html" class="hover:text-white transition">All Products</a></li>
+            <li><a href="shop.html?category=tshirt" class="hover:text-white transition">T-Shirts</a></li>
+            <li><a href="shop.html?category=polo" class="hover:text-white transition">Polo Shirts</a></li>
+            <li><a href="shop.html?category=panjabi" class="hover:text-white transition">Panjabi</a></li>
+            <li><a href="shop.html?category=women" class="hover:text-white transition">Women</a></li>
+          </ul>
+        </div>
+
+        <!-- Account -->
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">ACCOUNT</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+            <li><a href="register.html" class="hover:text-white transition">Register</a></li>
+            <li><a href="login.html" class="hover:text-white transition">My Orders</a></li>
+            <li><a href="login.html" class="hover:text-white transition">Wishlist</a></li>
+          </ul>
+        </div>
+
+        <!-- Help -->
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">HELP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Return Policy</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Tabassum Fashion. Made with <i class="fa-solid fa-heart text-red-500"></i> in Bangladesh</p>
+        <div class="flex items-center gap-3 text-gray-400">
+          <span class="text-sm">We Accept:</span>
+          <i class="fa-brands fa-cc-visa text-2xl"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+          <span class="text-xl font-bold text-green-500">bKash</span>
+          <span class="text-xl font-bold text-pink-500">Nagad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <!-- JAVASCRIPT (MOBILE MENU)                      -->
+  <!-- ════════════════════════════════════════════════ -->
+  <script>
+    // ─── Mobile Menu Toggle ───
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
+      });
+    }
+
+    // ─── Existing Cart Init ───
+    updateCartCount();
+  </script>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() { document.getElementById('cartCount').textContent = cart.reduce((s,i) => s + i.qty, 0); }
+    updateCartCount();
+
+    const products = [
+      { id:1, name:'Premium Oversized T-Shirt', category:'T-Shirt', price:890, oldPrice:1290, img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80', rating:5, reviews:24, desc:'প্রিমিয়াম কোয়ালিটির ওভারসাইজড টি-শার্ট। ১০০% প্রিমিয়াম কটন ফেব্রিক দিয়ে তৈরি। আরামদায়ক ফিট, ডে টু ডে ইউজের জন্য পারফেক্ট।' },
+      { id:2, name:'Classic Fit Polo Shirt', category:'Polo', price:1190, oldPrice:1690, img:'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&q=80', rating:4.5, reviews:18, desc:'ক্লাসিক ফিট পোলো শার্ট। প্রিমিয়াম পিকো কটন ফেব্রিক। অফিস ও ক্যাজুয়াল উভয় ক্ষেত্রেই ব্যবহার উপযোগী।' },
+      { id:3, name:'Royal Blue Panjabi Set', category:'Panjabi', price:1990, oldPrice:2490, img:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80', rating:5, reviews:42, desc:'রাজকীয় ব্লু পাঞ্জাবি সেট। প্রিমিয়াম কটন ফেব্রিক, এমব্রয়ডারি ডিজাইন। যেকোনো বিশেষ উপলক্ষ্যে পরার জন্য পারফেক্ট।' },
+      { id:4, name:'Floral Maxi Dress', category:'Women', price:1490, oldPrice:1990, img:'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80', rating:4.5, reviews:31, desc:'ফ্লোরাল ম্যাক্সি ড্রেস। প্রিমিয়াম ফেব্রিক, আরামদায়ক ফিট। গ্রীষ্মকালীন যেকোনো আউটিংয়ের জন্য অসাধারণ চয়েজ।' },
+      { id:5, name:'Kids Birthday Set', category:'Kids', price:690, oldPrice:990, img:'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6c8?w=400&q=80', rating:4, reviews:15, desc:'বাচ্চাদের জন্মদিনের স্পেশাল সেট। রঙিন ডিজাইন, সফট ফেব্রিক। বাচ্চাদের জন্য আরামদায়ক ও সুন্দর।' },
+      { id:6, name:'Premium Cotton Hoodie', category:'Hoodie', price:1890, oldPrice:2490, img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80', rating:5, reviews:37, desc:'প্রিমিয়াম কটন হুডি। ভারী কোয়ালিটি ফেব্রিক, ফ্লিস লাইনিং। শীতকালে উষ্ণ থাকার জন্য সেরা চয়েজ।' },
+      { id:7, name:'Leather Belt Brown', category:'Accessories', price:590, oldPrice:null, img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80', rating:4, reviews:9, desc:'জিনুইন লেদার বেল্ট। ব্রাউন কালার, প্রিমিয়াম বাকল। যেকোনো আউটফিটের সাথে পারফেক্ট ম্যাচ।' },
+      { id:8, name:'Classic Denim Jacket', category:'Outerwear', price:2490, oldPrice:3490, img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80', rating:4.5, reviews:22, desc:'ক্লাসিক ডেনিম জ্যাকেট। প্রিমিয়াম কোয়ালিটি, ট্রেন্ডি ডিজাইন। যেকোনো লুকে স্টাইল যোগ করতে পারফেক্ট।' },
+      { id:9, name:'Slim Fit Formal Shirt', category:'Shirt', price:1290, oldPrice:1690, img:'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&q=80', rating:4, reviews:12, desc:'স্লিম ফিট ফরমাল শার্ট। অফিস ও মিটিংয়ের জন্য উপযোগী। প্রিমিয়াম কটন ফেব্রিক, ক্রিজ-রেসিস্ট্যান্ট।' },
+      { id:10, name:'Casual Cotton T-Shirt', category:'T-Shirt', price:590, oldPrice:890, img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80', rating:4.5, reviews:28, desc:'ক্যাজুয়াল কটন টি-শার্ট। দামে সাশ্রয়ী, কোয়ালিটি প্রিমিয়াম। প্রতিদিনের ব্যবহারের জন্য অপরিহার্য।' },
+      { id:11, name:'Embroidered Panjabi', category:'Panjabi', price:2490, oldPrice:3290, img:'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80', rating:5, reviews:19, desc:'এমব্রয়ডারি পাঞ্জাবি। ঈদ ও বিশেষ অনুষ্ঠানের জন্য ডিজাইন করা। হ্যান্ড-এমব্রয়ডারি, প্রিমিয়াম ফিনিশিং।' },
+      { id:12, name:'Women Kurti Set', category:'Women', price:990, oldPrice:1490, img:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&q=80', rating:4.5, reviews:34, desc:'উইমেন কুর্তি সেট। ট্রেন্ডি ডিজাইন, আরামদায়ক ফেব্রিক। ডে টু ডে ওয়ার ও বিশেষ উপলক্ষ্যে পরা যাবে।' },
+    ];
+
+    let qty = 1;
+    let currentProduct = products[0];
+
+    function loadProduct(id) {
+      const p = products.find(x => x.id === id) || products[0];
+      currentProduct = p;
+      document.getElementById('productName').textContent = p.name;
+      document.getElementById('productCategory').textContent = p.category;
+      document.getElementById('productPrice').textContent = '৳' + p.price;
+      document.getElementById('productOldPrice').textContent = p.oldPrice ? '৳' + p.oldPrice : '';
+      document.getElementById('productDescription').textContent = p.desc;
+      document.getElementById('breadcrumbName').textContent = p.name;
+      document.getElementById('mainImage').src = p.img;
+
+      let stars = '';
+      for (let i=1; i<=5; i++) {
+        if (i <= Math.floor(p.rating)) stars += '<i class="fa-solid fa-star text-yellow-400"></i>';
+        else if (i - 0.5 === p.rating) stars += '<i class="fa-solid fa-star-half-stroke text-yellow-400"></i>';
+        else stars += '<i class="fa-regular fa-star text-yellow-400"></i>';
+      }
+      document.getElementById('ratingDisplay').innerHTML = stars + `<span class="text-gray-500 ml-2">(${p.reviews} reviews)</span>`;
+
+      // Thumbnails
+      const thumbs = document.getElementById('thumbnails');
+      thumbs.innerHTML = '';
+      for (let i=0; i<4; i++) {
+        const t = document.createElement('div');
+        t.className = 'aspect-square rounded-xl overflow-hidden bg-gray-100 cursor-pointer border-2 ' + (i===0 ? 'border-primary-600' : 'border-transparent');
+        t.innerHTML = `<img src="${p.img}" class="w-full h-full object-cover">`;
+        t.onclick = () => { document.getElementById('mainImage').src = p.img; };
+        thumbs.appendChild(t);
+      }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    loadProduct(parseInt(urlParams.get('id')) || 1);
+
+    function changeQty(delta) {
+      qty = Math.max(1, qty + delta);
+      document.getElementById('qtyDisplay').textContent = qty;
+    }
+
+    function addToCartFromDetail() {
+      const existing = cart.find(x => x.name === currentProduct.name);
+      if (existing) existing.qty += qty;
+      else cart.push({ name:currentProduct.name, price:currentProduct.price, img:currentProduct.img, qty });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert('✅ Added to cart!');
+    }
+
+    function buyNow() {
+      addToCartFromDetail();
+      window.location.href = 'checkout.html';
+    }
+
+    function toggleWishlist() {
+      const icon = document.querySelector('.fa-heart');
+      icon.classList.toggle('fa-regular');
+      icon.classList.toggle('fa-solid');
+      icon.classList.toggle('text-red-500');
+    }
+
+    // Size selector
+    document.querySelectorAll('.size-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.size-option').forEach(b => {
+          b.className = 'size-option px-6 py-3 border-2 border-gray-200 rounded-xl font-medium hover:border-primary-600 hover:text-primary-600 transition';
+        });
+        this.className = 'size-option px-6 py-3 border-2 border-primary-600 bg-primary-50 text-primary-600 rounded-xl font-medium';
+      });
+    });
+  </script>
+</body>
+</html>

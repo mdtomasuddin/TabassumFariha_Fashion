@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}</style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fa-solid fa-bars text-2xl text-gray-700"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-1">
+          <span class="text-2xl lg:text-3xl font-extrabold text-primary-600">Tabassum</span>
+          <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">Fashion</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+          <a href="index.html" class="hover:text-primary-600 transition pb-1">Home</a>
+          <a href="shop.html" class="hover:text-primary-600 transition pb-1">Shop</a>
+          <a href="index.html#categories" class="hover:text-primary-600 transition pb-1">Categories</a>
+          <a href="about.html" class="hover:text-primary-600 transition pb-1">About</a>
+          <a href="contact.html" class="hover:text-primary-600 transition pb-1">Contact</a>
+        </div>
+        <div class="flex items-center gap-4 lg:gap-5">
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition"><i class="fa-regular fa-user text-lg text-gray-700"></i></a>
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-regular fa-heart text-lg text-gray-700"></i>
+            <span class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="cart.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-solid fa-cart-shopping text-lg text-gray-700"></i>
+            <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="login.html" class="hidden sm:inline-block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">Login</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Home</a>
+        <a href="shop.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Shop</a>
+        <a href="index.html#categories" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Categories</a>
+        <a href="about.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">About</a>
+        <a href="contact.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Contact</a>
+        <hr class="border-gray-100">
+        <a href="login.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium"><i class="fa-regular fa-user mr-2"></i>Login</a>
+        <a href="register.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium"><i class="fa-regular fa-user-plus mr-2"></i>Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-12 lg:py-16 bg-gray-50 min-h-[60vh]">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <h1 class="text-3xl lg:text-4xl font-extrabold mb-8">Shopping Cart</h1>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2 space-y-4" id="cartItems">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Order Summary -->
+        <div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm sticky top-24">
+            <h2 class="font-bold text-xl mb-6">Order Summary</h2>
+            
+            <!-- Coupon -->
+            <div class="flex gap-2 mb-6">
+              <input type="text" id="couponInput" placeholder="Coupon code" class="flex-1 border-2 border-gray-200 rounded-full px-4 py-2.5 focus:border-primary-600 focus:outline-none text-sm">
+              <button onclick="applyCoupon()" class="bg-primary-600 hover:bg-primary-700 text-white px-5 rounded-full text-sm font-medium transition">Apply</button>
+            </div>
+
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-500">Subtotal</span>
+                <span class="font-semibold" id="subtotal">৳0</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Shipping</span>
+                <span class="font-semibold text-green-600" id="shipping">Free</span>
+              </div>
+              <div class="flex justify-between hidden" id="discountRow">
+                <span class="text-gray-500">Discount</span>
+                <span class="font-semibold text-red-500" id="discountAmount">-৳0</span>
+              </div>
+              <hr>
+              <div class="flex justify-between text-lg font-bold">
+                <span>Total</span>
+                <span id="total">৳0</span>
+              </div>
+            </div>
+
+            <a href="checkout.html" class="mt-6 w-full bg-primary-600 hover:bg-primary-700 text-white py-3.5 rounded-full font-bold transition flex items-center justify-center gap-2">
+              Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            
+            <a href="shop.html" class="mt-3 w-full block text-center text-primary-600 font-medium hover:underline">
+              <i class="fa-solid fa-arrow-left mr-1"></i> Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white pt-16 lg:pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div class="col-span-2 md:col-span-3 lg:col-span-2">
+          <a href="index.html" class="text-3xl font-bold text-orange-500 hover:text-orange-400 transition">Tabassum Fashion</a>
+          <p class="text-gray-400 mt-4 max-w-sm leading-relaxed">বাংলাদেশের সেরা ফ্যাশন ব্র্যান্ড। প্রিমিয়াম কোয়ালিটির টি-শার্ট, পোলো, শার্ট — সব এক জায়গায়। গ্রাহক সন্তুষ্টিই আমাদের মূল লক্ষ্য।</p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-orange-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-orange-300 uppercase tracking-wider">SHOP</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="shop.html" class="hover:text-white transition">All Products</a></li>
+            <li><a href="shop.html?category=tshirt" class="hover:text-white transition">T-Shirts</a></li>
+            <li><a href="shop.html?category=women" class="hover:text-white transition">মেয়েদের কাপড়</a></li>
+            <li><a href="shop.html?category=polo" class="hover:text-white transition">পোলো শার্ট</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-orange-300 uppercase tracking-wider">ACCOUNT</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+            <li><a href="register.html" class="hover:text-white transition">Register</a></li>
+            <li><a href="login.html" class="hover:text-white transition">My Orders</a></li>
+            <li><a href="login.html" class="hover:text-white transition">Wishlist</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-orange-300 uppercase tracking-wider">HELP</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Return Policy</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2026 Tabassum Fashion. Made with ❤️ in Bangladesh</p>
+        <p>Developed by <a href="#" class="text-orange-500 hover:text-orange-400 transition">Tabassum Fariha</a></p>
+        <div class="flex items-center gap-3 text-gray-400 text-sm">
+          <span>We Accept:</span>
+          <i class="fa-brands fa-cc-visa text-2xl"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+          <span class="font-bold text-green-400">bKash</span>
+          <span class="font-bold text-pink-400">Nagad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Mobile Menu ───
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // ─── Cart ───
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let couponApplied = false;
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl p-12 text-center">
+            <i class="fa-solid fa-cart-shopping text-6xl text-gray-300 mb-4"></i>
+            <h3 class="text-2xl font-bold text-gray-600">Your cart is empty</h3>
+            <p class="text-gray-400 mt-2">Looks like you haven't added any products yet.</p>
+            <a href="shop.html" class="inline-block mt-6 bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-medium transition">Start Shopping</a>
+          </div>`;
+        document.querySelector('.lg\\:col-span-2 + div').querySelector('a[href="checkout.html"]').classList.add('opacity-50', 'pointer-events-none');
+        updateSummary();
+        return;
+      }
+
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="bg-white rounded-2xl p-4 lg:p-6 shadow-sm flex flex-col sm:flex-row gap-4 items-start">
+          <img src="${item.img}" class="w-24 h-24 lg:w-28 lg:h-28 object-cover rounded-xl">
+          <div class="flex-1">
+            <h3 class="font-bold text-lg">${item.name}</h3>
+            <p class="text-primary-600 font-bold text-xl mt-1">৳${item.price.toLocaleString()}</p>
+            
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex items-center gap-3">
+                <button onclick="updateCart(${idx}, -1)" class="w-9 h-9 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-primary-600 transition font-bold">-</button>
+                <span class="font-bold text-lg w-8 text-center">${item.qty}</span>
+                <button onclick="updateCart(${idx}, 1)" class="w-9 h-9 rounded-full border-2 border-gray-200 flex items-center justify-center hover:border-primary-600 transition font-bold">+</button>
+              </div>
+              <button onclick="removeItem(${idx})" class="text-red-500 hover:text-red-700 transition text-sm font-medium"><i class="fa-regular fa-trash-can mr-1"></i> Remove</button>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="font-bold text-xl">৳${(item.price * item.qty).toLocaleString()}</span>
+          </div>
+        </div>
+      `).join('');
+      
+      document.querySelector('.lg\\:col-span-2 + div').querySelector('a[href="checkout.html"]').classList.remove('opacity-50', 'pointer-events-none');
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      document.getElementById('subtotal').textContent = '৳' + subtotal.toLocaleString();
+      
+      let total = subtotal;
+      const discount = couponApplied ? subtotal * 0.1 : 0;
+      
+      if (couponApplied) {
+        document.getElementById('discountRow').classList.remove('hidden');
+        document.getElementById('discountAmount').textContent = '-৳' + discount.toLocaleString();
+        total -= discount;
+      }
+      
+      document.getElementById('total').textContent = '৳' + total.toLocaleString();
+      document.getElementById('cartCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+    }
+
+    function updateCart(idx, delta) {
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function removeItem(idx) {
+      cart.splice(idx, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      if (code === 'WELCOME10') {
+        couponApplied = true;
+        document.getElementById('couponInput').classList.add('border-green-500');
+        updateSummary();
+        alert('✅ Coupon applied! 10% discount.');
+      } else if (code === '') {
+        alert('Please enter a coupon code.');
+      } else {
+        alert('❌ Invalid coupon code. Try WELCOME10');
+      }
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:1rem 0;font-family:var(--font-sans)}
+.section-label{font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--color-text-tertiary);text-transform:uppercase;margin:1.5rem 0 .5rem}
+.flow-row{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.page-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;cursor:pointer;transition:border-color .15s,background .15s;min-width:120px;flex:1}
+.page-card:hover{border-color:var(--color-border-secondary);background:var(--color-background-secondary)}
+.page-card .name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px}
+.page-card .file{font-family:var(--font-mono);font-size:10px;color:var(--color-text-tertiary);margin-bottom:4px}
+.page-card .desc{font-size:11px;color:var(--color-text-secondary);line-height:1.5}
+.arrow-row{display:flex;justify-content:center;align-items:center;gap:4px;margin:2px 0;color:var(--color-text-tertiary);font-size:18px}
+.arr-label{font-size:11px;color:var(--color-text-tertiary)}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;margin-top:4px}
+.b-purple{background:#EEEDFE;color:#3C3489}
+.b-teal{background:#E1F5EE;color:#0F6E56}
+.b-amber{background:#FAEEDA;color:#633806}
+.b-blue{background:#E6F1FB;color:#0C447C}
+.b-coral{background:#FAECE7;color:#712B13}
+.b-green{background:#EAF3DE;color:#27500A}
+.b-gray{background:#F1EFE8;color:#444441}
+.divider{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:1rem 0}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+</style>
+
+<div class="wrap">
+
+<div class="section-label">Public pages — যেকেউ দেখতে পাবে</div>
+
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel blade e e-commerce landing page er hero section, featured products, banner kivabe banabo?')">
+    <div class="name">Landing Page</div>
+    <div class="file">/ &nbsp; (welcome.blade.php)</div>
+    <div class="desc">Hero banner, featured products, categories, offers section</div>
+    <span class="badge b-purple">Home</span>
+  </div>
+</div>
+
+<div class="arrow-row">↓ <span class="arr-label">browse</span></div>
+
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel e shop page banate product listing, category filter, search, price range filter kivabe korbo?')">
+    <div class="name">Shop / Product List</div>
+    <div class="file">/shop &nbsp; (shop/index.blade.php)</div>
+    <div class="desc">সব product, filter by category, size, price — pagination সহ</div>
+    <span class="badge b-purple">Listing</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e category wise product page kivabe banabo? route ar controller example dao')">
+    <div class="name">Category Page</div>
+    <div class="file">/category/{slug}</div>
+    <div class="desc">T-shirt / মেয়েদের কাপড় — category filter করা products</div>
+    <span class="badge b-purple">Category</span>
+  </div>
+</div>
+
+<div class="arrow-row">↓ <span class="arr-label">click product</span></div>
+
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel e product detail page banate ki ki lagbe? image gallery, size selector, add to cart, reviews section')">
+    <div class="name">Product Detail</div>
+    <div class="file">/product/{slug} &nbsp; (shop/show.blade.php)</div>
+    <div class="desc">Photos, size/color picker, price, stock, Add to Cart button, Reviews</div>
+    <span class="badge b-purple">Detail</span>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Auth pages — register / login</div>
+
+<div class="sub-grid">
+  <div class="page-card" onclick="sendPrompt('Laravel Breeze diye register page customize kivabe korbo blade template e?')">
+    <div class="name">Register</div>
+    <div class="file">/register</div>
+    <div class="desc">নাম, email, password, phone number</div>
+    <span class="badge b-teal">Auth</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e login page ar remember me feature kivabe korbo?')">
+    <div class="name">Login</div>
+    <div class="file">/login</div>
+    <div class="desc">Email + password, remember me</div>
+    <span class="badge b-teal">Auth</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e forgot password ar reset password flow kivabe korbo?')">
+    <div class="name">Forgot Password</div>
+    <div class="file">/forgot-password</div>
+    <div class="desc">Email দিলে reset link যাবে</div>
+    <span class="badge b-teal">Auth</span>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Customer Dashboard — login করলে দেখা যাবে</div>
+
+<div class="sub-grid">
+  <div class="page-card" onclick="sendPrompt('Laravel e customer dashboard page ki ki section thakbe? orders, profile, addresses')">
+    <div class="name">My Dashboard</div>
+    <div class="file">/dashboard</div>
+    <div class="desc">Order summary, recent orders, quick links</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e customer order history page banate ki ki lagbe?')">
+    <div class="name">My Orders</div>
+    <div class="file">/orders</div>
+    <div class="desc">সব order list, status, details</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e order detail page — invoice download soho banate ki ki lagbe?')">
+    <div class="name">Order Detail</div>
+    <div class="file">/orders/{id}</div>
+    <div class="desc">Items, status timeline, invoice PDF</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e customer profile edit page — name, phone, password change kivabe korbo?')">
+    <div class="name">Profile / Edit</div>
+    <div class="file">/profile</div>
+    <div class="desc">নাম, phone, email, password change</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e customer er multiple shipping address manage kivabe korbo?')">
+    <div class="name">Addresses</div>
+    <div class="file">/addresses</div>
+    <div class="desc">Add/edit/delete shipping addresses</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e wishlist page banate ki ki lagbe? product add, remove, move to cart')">
+    <div class="name">Wishlist</div>
+    <div class="file">/wishlist</div>
+    <div class="desc">Saved products, move to cart</div>
+    <span class="badge b-blue">Customer</span>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Cart & Checkout flow</div>
+
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel e cart page banate ki ki lagbe? quantity update, remove item, coupon apply')">
+    <div class="name">Cart</div>
+    <div class="file">/cart</div>
+    <div class="desc">Items list, quantity update, remove, coupon code, subtotal</div>
+    <span class="badge b-amber">Cart</span>
+  </div>
+</div>
+<div class="arrow-row">↓ <span class="arr-label">proceed to checkout</span></div>
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel e checkout page — address select, order summary, payment method select kivabe banabo?')">
+    <div class="name">Checkout</div>
+    <div class="file">/checkout</div>
+    <div class="desc">Shipping address, order summary, payment method (SSLCommerz / bKash / COD)</div>
+    <span class="badge b-amber">Checkout</span>
+  </div>
+</div>
+<div class="arrow-row">↓ <span class="arr-label">pay / place order</span></div>
+<div class="flow-row">
+  <div class="page-card" onclick="sendPrompt('Laravel e SSLCommerz payment gateway integrate korle success, failed, cancel page ki hobe?')">
+    <div class="name">Payment Gateway</div>
+    <div class="file">SSLCommerz redirect</div>
+    <div class="desc">Bank/bKash/Nagad — external gateway এ যাবে</div>
+    <span class="badge b-amber">Payment</span>
+  </div>
+</div>
+<div class="arrow-row">↓ <span class="arr-label">callback</span></div>
+<div class="sub-grid">
+  <div class="page-card" onclick="sendPrompt('Laravel e payment success page banate ki ki dekhabo? order id, confirmation message, email')">
+    <div class="name">Order Success</div>
+    <div class="file">/order/success</div>
+    <div class="desc">Confirmation, order ID, email পাঠানো হবে</div>
+    <span class="badge b-green">Success</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e payment failed page kivabe handle korbo?')">
+    <div class="name">Payment Failed</div>
+    <div class="file">/order/failed</div>
+    <div class="desc">Try again, go to cart option</div>
+    <span class="badge b-coral">Failed</span>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Admin Panel — /admin/*</div>
+
+<div class="sub-grid">
+  <div class="page-card" onclick="sendPrompt('Laravel admin dashboard e ki ki stats card dekhabo? total sales, orders, customers')">
+    <div class="name">Admin Dashboard</div>
+    <div class="file">/admin/dashboard</div>
+    <div class="desc">Sales stats, recent orders, low stock alerts</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin panel e product CRUD — create, edit, delete, image upload full example dao')">
+    <div class="name">Products CRUD</div>
+    <div class="file">/admin/products</div>
+    <div class="desc">Add/edit/delete products, images, variations</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin panel e category CRUD kivabe banabo?')">
+    <div class="name">Categories</div>
+    <div class="file">/admin/categories</div>
+    <div class="desc">Add/edit categories, parent-child</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin e order list ar status change pending to delivered kivabe korbo?')">
+    <div class="name">Orders Management</div>
+    <div class="file">/admin/orders</div>
+    <div class="desc">All orders, filter by status, update status</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin e customer list ar details page banate ki ki lagbe?')">
+    <div class="name">Customers</div>
+    <div class="file">/admin/customers</div>
+    <div class="desc">Customer list, order history per customer</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin e coupon create ar manage kivabe korbo?')">
+    <div class="name">Coupons</div>
+    <div class="file">/admin/coupons</div>
+    <div class="desc">Create discount codes, expiry, usage limit</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin e sales report ar revenue chart banate ki ki lagbe?')">
+    <div class="name">Reports</div>
+    <div class="file">/admin/reports</div>
+    <div class="desc">Daily/monthly sales, revenue chart</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel admin e site settings — store name, logo, address, social links kivabe save korbo?')">
+    <div class="name">Settings</div>
+    <div class="file">/admin/settings</div>
+    <div class="desc">Store info, logo, social links, shipping cost</div>
+    <span class="badge b-coral">Admin</span>
+  </div>
+</div>
+
+<hr class="divider">
+<div class="section-label">Static pages</div>
+<div class="sub-grid">
+  <div class="page-card" onclick="sendPrompt('Laravel blade e about us page banate ki ki section thakbe?')">
+    <div class="name">About Us</div><div class="file">/about</div>
+    <div class="desc">Brand story, team</div>
+    <span class="badge b-gray">Static</span>
+  </div>
+  <div class="page-card" onclick="sendPrompt('Laravel e contact form banate ki ki lagbe? email pathano soho')">
+    <div class="name">Contact</div><div class="file">/contact</div>
+    <div class="desc">Form, map, phone/email</div>
+    <span class="badge b-gray">Static</span>
+  </div>
+  <div class="page-card">
+    <div class="name">Privacy Policy</div><div class="file">/privacy</div>
+    <div class="desc">Terms, return policy</div>
+    <span class="badge b-gray">Static</span>
+  </div>
+</div>
+
+</div>

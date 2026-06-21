@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}
+    .contact-hero{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80') center/cover fixed}
+  </style>
+</head>
+<body>
+
+  <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fa-solid fa-bars text-2xl text-gray-700"></i>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-1">
+          <span class="text-2xl lg:text-3xl font-extrabold text-primary-600">Tabassum</span>
+          <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">Fashion</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+          <a href="index.html" class="hover:text-primary-600 transition pb-1">Home</a>
+          <a href="shop.html" class="hover:text-primary-600 transition pb-1">Shop</a>
+          <a href="index.html#categories" class="hover:text-primary-600 transition pb-1">Categories</a>
+          <a href="about.html" class="hover:text-primary-600 transition pb-1">About</a>
+          <a href="contact.html" class="text-primary-600 border-b-2 border-primary-600 pb-1">Contact</a>
+        </div>
+        <div class="flex items-center gap-4 lg:gap-6">
+          <a href="login.html" class="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition">
+            <i class="fa-regular fa-user text-lg text-gray-700"></i>
+          </a>
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-regular fa-heart text-lg text-gray-700"></i>
+            <span class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="cart.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-solid fa-cart-shopping text-lg text-gray-700"></i>
+            <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="login.html" class="hidden lg:block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">Login</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 px-4 bg-primary-50 text-primary-600 rounded-lg font-medium">Home</a>
+        <a href="shop.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Shop</a>
+        <a href="index.html#categories" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Categories</a>
+        <a href="about.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">About</a>
+        <a href="contact.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Contact</a>
+        <hr class="my-2">
+        <a href="login.html" class="block py-2 px-4 text-primary-600 font-medium"><i class="fa-regular fa-user mr-2"></i>Login / Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="contact-hero py-20 lg:py-32 text-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+      <h1 class="text-4xl lg:text-6xl font-extrabold">Get in Touch</h1>
+      <p class="mt-4 text-gray-300 text-lg max-w-2xl mx-auto">আপনার মতামত ও প্রশ্ন আমাদের জন্য গুরুত্বপূর্ণ</p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+        <!-- Contact Form -->
+        <div>
+          <span class="text-primary-600 font-semibold text-sm tracking-widest uppercase">Contact</span>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mt-3">Send Us a Message</h2>
+          <p class="text-gray-500 mt-3">নীচের ফর্মটি পূরণ করুন — আমরা যত দ্রুত সম্ভব আপনার সাথে যোগাযোগ করব।</p>
+
+          <form onsubmit="handleContact(event)" class="mt-8 space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-medium mb-1.5">Your Name *</label>
+                <input type="text" id="contactName" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 focus:border-primary-600 focus:outline-none" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1.5">Your Email *</label>
+                <input type="email" id="contactEmail" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 focus:border-primary-600 focus:outline-none" placeholder="your@email.com">
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Subject</label>
+              <input type="text" id="contactSubject" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 focus:border-primary-600 focus:outline-none" placeholder="Subject">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5">Message *</label>
+              <textarea id="contactMessage" required rows="5" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 focus:border-primary-600 focus:outline-none" placeholder="Write your message here..."></textarea>
+            </div>
+            <button type="submit" class="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white px-10 py-3.5 rounded-full font-bold transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+            <p id="contactMsg" class="text-sm hidden"></p>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <span class="text-primary-600 font-semibold text-sm tracking-widest uppercase">Information</span>
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mt-3">Contact Details</h2>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-location-dot text-primary-600"></i></div>
+            <div>
+              <h4 class="font-bold">Office Address</h4>
+              <p class="text-gray-600 mt-1">123, Gulshan Avenue, Dhaka-1212, Bangladesh</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-phone text-green-600"></i></div>
+            <div>
+              <h4 class="font-bold">Phone</h4>
+              <p class="text-gray-600 mt-1">+880 1700-000000</p>
+              <p class="text-gray-600">+880 1800-000000</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-envelope text-blue-600"></i></div>
+            <div>
+              <h4 class="font-bold">Email</h4>
+              <p class="text-gray-600 mt-1">support@tabassumfashion.com</p>
+              <p class="text-gray-600">info@tabassumfashion.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center shrink-0"><i class="fa-solid fa-clock text-purple-600"></i></div>
+            <div>
+              <h4 class="font-bold">Working Hours</h4>
+              <p class="text-gray-600 mt-1">Saturday - Thursday: 10:00 AM - 8:00 PM</p>
+              <p class="text-gray-600">Friday: Closed</p>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <p class="font-semibold mb-3">Follow Us:</p>
+            <div class="flex gap-3">
+              <a href="#" class="w-10 h-10 bg-gray-100 hover:bg-primary-600 hover:text-white rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="w-10 h-10 bg-gray-100 hover:bg-pink-600 hover:text-white rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="w-10 h-10 bg-gray-100 hover:bg-blue-500 hover:text-white rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="h-80 bg-gray-200">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.0!2d90.4125!3d23.7771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7e5b5b5b5b5%3A0x0!2zMjPCsDQ2JzM3LjYiTiA5MMKwMjQnNDUuMCJF!5e0!3m2!1sen!2sbd!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <footer class="bg-gray-900 text-white pt-16 lg:pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div class="col-span-2 md:col-span-3 lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1">
+            <span class="text-3xl font-extrabold text-primary-500">Tabassum</span>
+            <span class="text-3xl font-extrabold text-white">Fashion</span>
+          </a>
+          <p class="text-gray-400 mt-4 max-w-sm leading-relaxed">বাংলাদেশের সেরা ফ্যাশন ব্র্যান্ড। প্রিমিয়াম কোয়ালিটির টি-শার্ট, পোলো, শার্ট — সব এক জায়গায়। গ্রাহক সন্তুষ্টিই আমাদের মূল লক্ষ্য।</p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-sky-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">SHOP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="shop.html" class="hover:text-white transition">All Products</a></li>
+            <li><a href="shop.html?category=tshirt" class="hover:text-white transition">T-Shirts</a></li>
+            <li><a href="shop.html?category=polo" class="hover:text-white transition">Polo Shirts</a></li>
+            <li><a href="shop.html?category=panjabi" class="hover:text-white transition">Panjabi</a></li>
+            <li><a href="shop.html?category=women" class="hover:text-white transition">Women</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">ACCOUNT</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+            <li><a href="register.html" class="hover:text-white transition">Register</a></li>
+            <li><a href="login.html" class="hover:text-white transition">My Orders</a></li>
+            <li><a href="login.html" class="hover:text-white transition">Wishlist</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">HELP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Return Policy</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Tabassum Fashion. Made with <i class="fa-solid fa-heart text-red-500"></i> in Bangladesh</p>
+        <div class="flex items-center gap-3 text-gray-400">
+          <span class="text-sm">We Accept:</span>
+          <i class="fa-brands fa-cc-visa text-2xl"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+          <span class="text-xl font-bold text-green-500">bKash</span>
+          <span class="text-xl font-bold text-pink-500">Nagad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Mobile Menu Toggle ───
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
+      });
+    }
+
+    // ─── Cart System ───
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() {
+      const badge = document.getElementById('cartCount');
+      if (badge) {
+        badge.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      }
+    }
+    updateCartCount();
+  </script>
+
+  <script>
+    function handleContact(e) {
+      e.preventDefault();
+      const msg = document.getElementById('contactMsg');
+      msg.classList.remove('hidden', 'text-green-600', 'text-red-500');
+      msg.classList.add('text-green-600');
+      msg.textContent = '✅ Thank you! Your message has been sent. We will get back to you soon.';
+      document.getElementById('contactName').value = '';
+      document.getElementById('contactEmail').value = '';
+      document.getElementById('contactSubject').value = '';
+      document.getElementById('contactMessage').value = '';
+    }
+  </script>
+</body>
+</html>

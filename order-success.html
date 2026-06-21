@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Success - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}</style>
+</head>
+<body>
+
+  <div class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
+    <div class="w-full max-w-lg bg-white rounded-3xl shadow-sm p-8 lg:p-12 text-center">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+        <i class="fa-solid fa-check text-4xl text-green-600"></i>
+      </div>
+      <h1 class="text-3xl font-extrabold text-gray-900 mt-6">Order Placed! 🎉</h1>
+      <p class="text-gray-500 mt-3">Your order has been placed successfully. We'll send you a confirmation email shortly.</p>
+      
+      <div class="mt-8 bg-gray-50 rounded-2xl p-6">
+        <p class="text-sm text-gray-500">Order ID</p>
+        <p id="orderIdDisplay" class="text-2xl font-extrabold text-primary-600 mt-1"></p>
+      </div>
+
+      <div class="mt-8 space-y-4">
+        <a href="shop.html" class="block w-full bg-primary-600 hover:bg-primary-700 text-white py-3.5 rounded-full font-bold transition">
+          Continue Shopping <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+        <a href="index.html" class="block w-full border-2 border-gray-200 hover:border-gray-400 py-3.5 rounded-full font-medium transition">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('orderIdDisplay').textContent = urlParams.get('id') || 'TF00000000';
+  </script>
+</body>
+</html>

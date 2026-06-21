@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}</style>
+</head>
+<body>
+
+  <nav class="bg-white shadow-md border-b">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-1">
+        <span class="text-2xl font-extrabold text-primary-600">Tabassum</span>
+        <span class="text-2xl font-extrabold text-gray-900">Fashion</span>
+      </a>
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <span class="text-primary-600 font-semibold">Cart</span>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span class="text-gray-900 font-semibold">Checkout</span>
+      </div>
+    </div>
+  </nav>
+
+  <section class="py-12 lg:py-16 bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <h1 class="text-3xl lg:text-4xl font-extrabold mb-8">Checkout</h1>
+
+      <form onsubmit="placeOrder(event)" class="grid lg:grid-cols-5 gap-8">
+
+        <!-- Left - Shipping Info -->
+        <div class="lg:col-span-3 space-y-6">
+          <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+            <h2 class="font-bold text-xl mb-6 flex items-center gap-2"><i class="fa-solid fa-location-dot text-primary-600"></i> Shipping Address</h2>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1.5">Full Name *</label>
+                <input type="text" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none" placeholder="Your full name">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1.5">Phone *</label>
+                <input type="tel" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none" placeholder="01XXXXXXXXX">
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium mb-1.5">Email</label>
+                <input type="email" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none" placeholder="your@email.com">
+              </div>
+              <div class="sm:col-span-2">
+                <label class="block text-sm font-medium mb-1.5">Address *</label>
+                <input type="text" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none" placeholder="House, Road, Area">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1.5">City *</label>
+                <select required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none bg-white">
+                  <option>Dhaka</option>
+                  <option>Chittagong</option>
+                  <option>Sylhet</option>
+                  <option>Khulna</option>
+                  <option>Rajshahi</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1.5">Postal Code</label>
+                <input type="text" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none" placeholder="1207">
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+            <h2 class="font-bold text-xl mb-6 flex items-center gap-2"><i class="fa-solid fa-credit-card text-primary-600"></i> Payment Method</h2>
+            <div class="space-y-3">
+              <label class="flex items-center gap-4 p-4 border-2 border-primary-600 bg-primary-50 rounded-xl cursor-pointer">
+                <input type="radio" name="payment" value="cod" checked class="accent-primary-600">
+                <div><span class="font-semibold">Cash on Delivery</span><p class="text-gray-500 text-sm">Pay when received</p></div>
+              </label>
+              <label class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary-600 transition">
+                <input type="radio" name="payment" value="bkash" class="accent-primary-600">
+                <div class="flex items-center gap-2"><span class="font-semibold">bKash</span><span class="text-sm text-pink-600 font-bold">Personal</span></div>
+              </label>
+              <label class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary-600 transition">
+                <input type="radio" name="payment" value="nagad" class="accent-primary-600">
+                <div class="flex items-center gap-2"><span class="font-semibold">Nagad</span><span class="text-sm text-orange-600 font-bold">Personal</span></div>
+              </label>
+              <label class="flex items-center gap-4 p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-primary-600 transition">
+                <input type="radio" name="payment" value="ssl" class="accent-primary-600">
+                <div><span class="font-semibold">SSLCommerz</span><p class="text-gray-500 text-sm">Visa, Mastercard, Amex</p></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right - Order Summary -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm sticky top-24">
+            <h2 class="font-bold text-xl mb-6">Order Summary</h2>
+            <div id="checkoutItems" class="space-y-4"></div>
+            <hr class="my-4">
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between"><span class="text-gray-500">Subtotal</span><span class="font-semibold" id="checkoutSubtotal">৳0</span></div>
+              <div class="flex justify-between"><span class="text-gray-500">Shipping</span><span class="font-semibold text-green-600">Free</span></div>
+              <hr>
+              <div class="flex justify-between text-lg font-bold"><span>Total</span><span id="checkoutTotal">৳0</span></div>
+            </div>
+            <button type="submit" class="mt-6 w-full bg-primary-600 hover:bg-primary-700 text-white py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-lock"></i> Place Order
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center text-gray-500 text-sm">© 2025 Tabassum Fashion</div>
+  </footer>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    function renderCheckout() {
+      const container = document.getElementById('checkoutItems');
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. <a href="shop.html" class="text-primary-600">Shop now</a></p>';
+        return;
+      }
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-4">
+          <img src="${item.img}" class="w-16 h-16 object-cover rounded-lg">
+          <div class="flex-1">
+            <p class="font-semibold text-sm">${item.name}</p>
+            <p class="text-gray-500 text-sm">Qty: ${item.qty}</p>
+          </div>
+          <span class="font-bold">৳${(item.price * item.qty).toLocaleString()}</span>
+        </div>
+      `).join('');
+
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      document.getElementById('checkoutSubtotal').textContent = '৳' + subtotal.toLocaleString();
+      document.getElementById('checkoutTotal').textContent = '৳' + subtotal.toLocaleString();
+    }
+
+    function placeOrder(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      const payment = document.querySelector('input[name="payment"]:checked').value;
+      const orderId = 'TF' + Date.now().toString().slice(-8);
+      localStorage.setItem('lastOrder', JSON.stringify({ id: orderId, items: cart, total: cart.reduce((s,i) => s + i.price * i.qty, 0), date: new Date().toISOString() }));
+      localStorage.removeItem('cart');
+      window.location.href = 'order-success.html?id=' + orderId;
+    }
+
+    renderCheckout();
+  </script>
+</body>
+</html>
