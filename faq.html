@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}
+    .policy-hero{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80') center/cover fixed}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fa-solid fa-bars text-2xl text-gray-700"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-1">
+          <span class="text-2xl lg:text-3xl font-extrabold text-primary-600">Tabassum</span>
+          <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">Fashion</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+          <a href="index.html" class="hover:text-primary-600 transition pb-1">Home</a>
+          <a href="shop.html" class="hover:text-primary-600 transition pb-1">Shop</a>
+          <a href="index.html#categories" class="hover:text-primary-600 transition pb-1">Categories</a>
+          <a href="about.html" class="hover:text-primary-600 transition pb-1">About</a>
+          <a href="contact.html" class="hover:text-primary-600 transition pb-1">Contact</a>
+        </div>
+        <div class="flex items-center gap-4 lg:gap-6">
+          <a href="login.html" class="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition">
+            <i class="fa-regular fa-user text-lg text-gray-700"></i>
+          </a>
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-regular fa-heart text-lg text-gray-700"></i>
+            <span class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="cart.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-solid fa-cart-shopping text-lg text-gray-700"></i>
+            <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="login.html" class="hidden lg:block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">Login</a>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Home</a>
+        <a href="shop.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Shop</a>
+        <a href="index.html#categories" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Categories</a>
+        <a href="about.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">About</a>
+        <a href="contact.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Contact</a>
+        <hr class="my-2">
+        <a href="login.html" class="block py-2 px-4 text-primary-600 font-medium"><i class="fa-regular fa-user mr-2"></i>Login / Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="policy-hero py-20 lg:py-28 text-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+      <h1 class="text-4xl lg:text-6xl font-extrabold">Frequently Asked Questions</h1>
+      <p class="mt-4 text-gray-300 text-lg max-w-2xl mx-auto">আপনার সকল প্রশ্নের উত্তর — এক জায়গায়। আরও কিছু জানতে চাইলে আমাদের সাথে যোগাযোগ করুন</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 lg:px-8">
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2 mb-10 justify-center" id="faqTabs">
+        <button onclick="filterFaq(event, 'all')" class="faq-tab px-6 py-2.5 bg-primary-600 text-white rounded-full text-sm font-medium transition">All</button>
+        <button onclick="filterFaq(event, 'ordering')" class="faq-tab px-6 py-2.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-medium transition">🛒 Ordering</button>
+        <button onclick="filterFaq(event, 'payment')" class="faq-tab px-6 py-2.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-medium transition">💳 Payment</button>
+        <button onclick="filterFaq(event, 'shipping')" class="faq-tab px-6 py-2.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-medium transition">🚚 Shipping</button>
+        <button onclick="filterFaq(event, 'returns')" class="faq-tab px-6 py-2.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-medium transition">↩️ Returns</button>
+        <button onclick="filterFaq(event, 'account')" class="faq-tab px-6 py-2.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-sm font-medium transition">👤 Account</button>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 divide-y divide-gray-100 overflow-hidden" id="faqContainer">
+
+        <!-- ─── ORDERING ─── -->
+        <div class="faq-item" data-category="ordering">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How do I place an order?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">আপনার পছন্দের পণ্য সিলেক্ট করে "Add to Cart" এ ক্লিক করুন, তারপর Cart পেজ থেকে "Proceed to Checkout" এ গিয়ে আপনার শিপিং তথ্য দিয়ে অর্ডার কনফার্ম করুন। অর্ডার কনফার্ম হওয়ার পর আমরা আপনাকে কনফার্মেশন ইমেইল পাঠাব।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="ordering">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">Can I modify or cancel my order after placing it?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">অর্ডার দেওয়ার ২৪ ঘন্টার মধ্যে আমরা অর্ডার পরিবর্তন বা বাতিল করতে পারবেন। দ্রুততম সময়ে আমাদের <a href="contact.html" class="text-primary-600 hover:underline">কাস্টমার সাপোর্টে</a> যোগাযোগ করুন। যদি অর্ডারটি ইতিমধ্যে প্রসেসিং হয়ে থাকে, তাহলে পরিবর্তন সম্ভব নাও হতে পারে।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="ordering">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How long does it take to process my order?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">অর্ডার প্রসেসিং টাইম সাধারণত ১-২ কার্যদিবস। এই সময়ের মধ্যে আমরা আপনার পণ্য প্যাক করে ডেলিভারির জন্য হস্তান্তর করি। অর্ডার কনফার্মেশনের পর আপনি একটি ট্র্যাকিং নম্বর পাবেন।</p>
+          </div>
+        </div>
+
+        <!-- ─── PAYMENT ─── -->
+        <div class="faq-item" data-category="payment">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">What payment methods do you accept?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">আমরা নিম্নলিখিত পেমেন্ট মেথড গ্রহণ করি:</p>
+            <div class="flex flex-wrap gap-3 mt-3">
+              <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">💵 Cash on Delivery (COD)</span>
+              <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-medium">📱 bKash</span>
+              <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium">📱 Nagad</span>
+              <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">💳 Credit/Debit Card</span>
+              <span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium">🔒 SSLCommerz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="payment">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">Is it safe to pay online?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">হ্যাঁ, সম্পূর্ণ নিরাপদ। আমরা SSLCommerz-এর মতো নিরাপদ পেমেন্ট গেটওয়ে ব্যবহার করি যা আপনার তথ্য এনক্রিপ্ট করে রাখে। আপনার পেমেন্ট তথ্য কখনো আমাদের সার্ভারে সংরক্ষিত হয় না।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="payment">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">Can I pay with COD (Cash on Delivery)?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">অবশ্যই! Cash on Delivery (COD) সারাদেশে উপলব্ধ। অর্ডার ডেলিভারির সময় পণ্য হাতে পাওয়ার পর আপনি নগদ পেমেন্ট করতে পারবেন। COD-তে কোন এক্সট্রা চার্জ নেই।</p>
+          </div>
+        </div>
+
+        <!-- ─── SHIPPING ─── -->
+        <div class="faq-item" data-category="shipping">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How long does shipping take?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">শipping টাইম লোকেশন অনুযায়ী ভিন্ন হয়:</p>
+            <ul class="mt-2 space-y-1 text-gray-600">
+              <li>📦 <strong>ঢাকা সিটি:</strong> ১-২ কার্যদিবস</li>
+              <li>📦 <strong>বিভাগীয় শহর:</strong> ২-৩ কার্যদিবস</li>
+              <li>📦 <strong>অন্যান্য এলাকা:</strong> ৩-৫ কার্যদিবস</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="shipping">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">Do you offer free shipping?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">হ্যাঁ! ৳১,৫০০ বা তার বেশি অর্ডারে <strong>ফ্রি শিপিং</strong> অফার করা হয়। এর কম মূল্যের অর্ডারের জন্য শিপিং চার্জ ৳৬০ থেকে ৳১২০ (লোকেশন অনুযায়ী)।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="shipping">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">Can I track my order?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">অবশ্যই। অর্ডার প্রসেস হওয়ার পর আমরা আপনাকে একটি ট্র্যাকিং নম্বর এসএমএস ও ইমেইলের মাধ্যমে পাঠাব। আমাদের <a href="contact.html" class="text-primary-600 hover:underline">সাপোর্ট টিম</a> থেকেও আপনি আপনার অর্ডারের স্ট্যাটাস জানতে পারবেন।</p>
+          </div>
+        </div>
+
+        <!-- ─── RETURNS ─── -->
+        <div class="faq-item" data-category="returns">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">What is your return policy?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">আমরা পণ্য প্রাপ্তির ৭ দিনের মধ্যে রিটার্ন গ্রহণ করি। পণ্যটি অব্যবহৃত এবং অরিজিনাল প্যাকেজিং সহ থাকতে হবে। বিস্তারিত জানতে আমাদের <a href="return-policy.html" class="text-primary-600 hover:underline">Return Policy</a> পৃষ্ঠাটি দেখুন।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="returns">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How long does a refund take?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">রিফান্ড টাইম পেমেন্ট মেথড অনুযায়ী ভিন্ন হয়:</p>
+            <ul class="mt-2 space-y-1 text-gray-600">
+              <li>📱 <strong>bKash/Nagad:</strong> ২৪-৪৮ ঘন্টা</li>
+              <li>💵 <strong>COD (Bank Transfer):</strong> ৫-৭ কার্যদিবস</li>
+              <li>💳 <strong>Card:</strong> ৫-১০ কার্যদিবস</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="returns">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">What if I receive a damaged or wrong item?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">যদি আপনি ভুল পণ্য পান অথবা পণ্যটি ক্ষতিগ্রস্ত অবস্থায় পৌঁছে, তাহলে ২৪ ঘন্টার মধ্যে আমাদের <a href="contact.html" class="text-primary-600 hover:underline">কাস্টমার সাপোর্টে</a> জানান। আমরা বিনামূল্যে রিপ্লেসমেন্ট বা ফুল রিফান্ডের ব্যবস্থা করব।</p>
+          </div>
+        </div>
+
+        <!-- ─── ACCOUNT ─── -->
+        <div class="faq-item" data-category="account">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How do I create an account?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">আমাদের <a href="register.html" class="text-primary-600 hover:underline">Register</a> পৃষ্ঠায় গিয়ে আপনার নাম, ইমেইল ও ফোন নম্বর দিয়ে সহজেই একটি অ্যাকাউন্ট তৈরি করতে পারেন। অ্যাকাউন্ট খোলা সম্পূর্ণ ফ্রি!</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="account">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">I forgot my password. What should I do?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed"><a href="login.html" class="text-primary-600 hover:underline">Login</a> পৃষ্ঠায় "Forgot Password?" লিংকে ক্লিক করে আপনার ইমেইল দিন। আমরা একটি পাসওয়ার্ড রিসেট লিংক পাঠাব।</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-category="account">
+          <button class="faq-question w-full flex items-center justify-between p-5 lg:p-6 text-left hover:bg-gray-50 transition" onclick="toggleFaq(this)">
+            <span class="font-bold text-gray-900 pr-4">How can I contact customer support?</span>
+            <i class="fa-solid fa-chevron-down text-gray-400 transition-transform shrink-0"></i>
+          </button>
+          <div class="faq-answer hidden px-5 lg:px-6 pb-5 lg:pb-6">
+            <p class="text-gray-600 leading-relaxed">আমাদের সাথে যোগাযোগ করতে পারেন:</p>
+            <ul class="mt-2 space-y-1 text-gray-600">
+              <li>📧 <strong>Email:</strong> support@tabassumfashion.com</li>
+              <li>📞 <strong>Phone:</strong> +880 1700-000000</li>
+              <li>⏰ <strong>Hours:</strong> Sat - Thu, 10:00 AM - 8:00 PM</li>
+            </ul>
+            <a href="contact.html" class="inline-flex items-center gap-2 mt-4 text-primary-600 font-medium hover:underline"><i class="fa-regular fa-message"></i> Contact Form</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Still have questions? -->
+      <div class="text-center mt-12 p-8 bg-primary-50 rounded-2xl">
+        <i class="fa-regular fa-circle-question text-4xl text-primary-600 mb-4"></i>
+        <h3 class="text-2xl font-extrabold text-gray-900">Still Have Questions?</h3>
+        <p class="text-gray-500 mt-2">আমরা সাহায্য করতে সবসময় প্রস্তুত। আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না।</p>
+        <a href="contact.html" class="inline-flex items-center gap-2 mt-6 bg-primary-600 hover:bg-primary-700 text-white px-8 py-3.5 rounded-full font-bold transition">
+          <i class="fa-regular fa-message"></i> Contact Us
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 lg:pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div class="col-span-2 md:col-span-3 lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1">
+            <span class="text-3xl font-extrabold text-primary-500">Tabassum</span>
+            <span class="text-3xl font-extrabold text-white">Fashion</span>
+          </a>
+          <p class="text-gray-400 mt-4 max-w-sm leading-relaxed">বাংলাদেশের সেরা ফ্যাশন ব্র্যান্ড। প্রিমিয়াম কোয়ালিটির টি-শার্ট, পোলো, শার্ট — সব এক জায়গায়। গ্রাহক সন্তুষ্টিই আমাদের মূল লক্ষ্য।</p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-sky-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">SHOP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="shop.html" class="hover:text-white transition">All Products</a></li>
+            <li><a href="shop.html?category=tshirt" class="hover:text-white transition">T-Shirts</a></li>
+            <li><a href="shop.html?category=polo" class="hover:text-white transition">Polo Shirts</a></li>
+            <li><a href="shop.html?category=panjabi" class="hover:text-white transition">Panjabi</a></li>
+            <li><a href="shop.html?category=women" class="hover:text-white transition">Women</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">ACCOUNT</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+            <li><a href="register.html" class="hover:text-white transition">Register</a></li>
+            <li><a href="login.html" class="hover:text-white transition">My Orders</a></li>
+            <li><a href="login.html" class="hover:text-white transition">Wishlist</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">HELP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+            <li><a href="return-policy.html" class="hover:text-white transition">Return Policy</a></li>
+            <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Tabassum Fashion. Made with <i class="fa-solid fa-heart text-red-500"></i> in Bangladesh</p>
+        <div class="flex items-center gap-3 text-gray-400">
+          <span class="text-sm">We Accept:</span>
+          <i class="fa-brands fa-cc-visa text-2xl"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+          <span class="text-xl font-bold text-green-500">bKash</span>
+          <span class="text-xl font-bold text-pink-500">Nagad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Mobile Menu Toggle ───
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
+      });
+    }
+
+    // ─── Cart System ───
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() {
+      const badge = document.getElementById('cartCount');
+      if (badge) {
+        badge.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+      }
+    }
+    updateCartCount();
+
+    // ─── FAQ Accordion ───
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const icon = btn.querySelector('i.fa-chevron-down');
+      const isOpen = !answer.classList.contains('hidden');
+      
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-question i.fa-chevron-down').forEach(i => i.classList.remove('rotate-180'));
+      
+      if (!isOpen) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      }
+    }
+
+    // ─── FAQ Filter ───
+    function filterFaq(event, category) {
+      document.querySelectorAll('.faq-tab').forEach(t => {
+        t.classList.remove('bg-primary-600', 'text-white');
+        t.classList.add('bg-gray-100', 'text-gray-600');
+      });
+      event.target.classList.remove('bg-gray-100', 'text-gray-600');
+      event.target.classList.add('bg-primary-600', 'text-white');
+      
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      
+      // Close all open answers
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-question i.fa-chevron-down').forEach(i => i.classList.remove('rotate-180'));
+    }
+  </script>
+</body>
+</html>

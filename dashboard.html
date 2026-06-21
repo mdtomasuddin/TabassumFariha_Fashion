@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - Tabassum Fashion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={theme:{extend:{colors:{primary:{'50':'#fff7ed','100':'#ffedd5','200':'#fed7aa','300':'#fdba74','400':'#fb923c','500':'#f97316','600':'#ea580c','700':'#c2410c','800':'#9a3412','900':'#7c2d12'}}}}}</script>
+  <style>*{font-family:'Inter',system-ui,-apple-system,sans-serif}</style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <i class="fa-solid fa-bars text-2xl text-gray-700"></i>
+        </button>
+        <a href="index.html" class="flex items-center gap-1">
+          <span class="text-2xl lg:text-3xl font-extrabold text-primary-600">Tabassum</span>
+          <span class="text-2xl lg:text-3xl font-extrabold text-gray-900">Fashion</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+          <a href="index.html" class="hover:text-primary-600 transition pb-1">Home</a>
+          <a href="shop.html" class="hover:text-primary-600 transition pb-1">Shop</a>
+          <a href="index.html#categories" class="hover:text-primary-600 transition pb-1">Categories</a>
+          <a href="about.html" class="hover:text-primary-600 transition pb-1">About</a>
+          <a href="contact.html" class="hover:text-primary-600 transition pb-1">Contact</a>
+        </div>
+        <div class="flex items-center gap-4 lg:gap-6">
+          <a href="login.html" class="hidden sm:block p-2 hover:bg-gray-100 rounded-full transition">
+            <i class="fa-regular fa-user text-lg text-gray-700"></i>
+          </a>
+          <a href="login.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-regular fa-heart text-lg text-gray-700"></i>
+            <span class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="cart.html" class="p-2 hover:bg-gray-100 rounded-full transition relative">
+            <i class="fa-solid fa-cart-shopping text-lg text-gray-700"></i>
+            <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-primary-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+          </a>
+          <a href="login.html" class="hidden lg:block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2.5 rounded-full text-sm font-medium transition">Login</a>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Home</a>
+        <a href="shop.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Shop</a>
+        <a href="index.html#categories" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Categories</a>
+        <a href="about.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">About</a>
+        <a href="contact.html" class="block py-2 px-4 hover:bg-gray-50 rounded-lg font-medium">Contact</a>
+        <hr class="my-2">
+        <a href="login.html" class="block py-2 px-4 text-primary-600 font-medium"><i class="fa-regular fa-user mr-2"></i>Login / Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="bg-gray-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3">
+      <div class="flex items-center gap-2 text-sm text-gray-500">
+        <a href="index.html" class="hover:text-primary-600 transition">Home</a>
+        <i class="fa-solid fa-chevron-right text-xs"></i>
+        <span class="text-gray-900 font-medium">My Dashboard</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <section class="py-8 lg:py-12 bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid lg:grid-cols-4 gap-6 lg:gap-8">
+
+        <!-- ─── Sidebar ─── -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden sticky top-24">
+
+            <!-- User Info -->
+            <div class="p-6 text-center border-b border-gray-100">
+              <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto">
+                <span class="text-3xl font-extrabold text-primary-600">TF</span>
+              </div>
+              <h3 class="font-bold text-lg mt-3">Tabassum Fariha</h3>
+              <p class="text-gray-400 text-sm">tabassum@email.com</p>
+            </div>
+
+            <!-- Nav -->
+            <div class="p-4 space-y-1" id="dashboardNav">
+              <button onclick="switchTab('overview')" data-tab="overview" class="dash-tab w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition bg-primary-50 text-primary-600">
+                <i class="fa-solid fa-gauge-high w-5"></i> Dashboard
+              </button>
+              <button onclick="switchTab('orders')" data-tab="orders" class="dash-tab w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition hover:bg-gray-50 text-gray-600">
+                <i class="fa-solid fa-box w-5"></i> My Orders
+                <span class="ml-auto bg-primary-100 text-primary-600 text-xs px-2 py-0.5 rounded-full">3</span>
+              </button>
+              <button onclick="switchTab('wishlist')" data-tab="wishlist" class="dash-tab w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition hover:bg-gray-50 text-gray-600">
+                <i class="fa-regular fa-heart w-5"></i> Wishlist
+                <span class="ml-auto bg-pink-100 text-pink-600 text-xs px-2 py-0.5 rounded-full">5</span>
+              </button>
+              <button onclick="switchTab('addresses')" data-tab="addresses" class="dash-tab w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition hover:bg-gray-50 text-gray-600">
+                <i class="fa-solid fa-location-dot w-5"></i> Addresses
+              </button>
+              <button onclick="switchTab('profile')" data-tab="profile" class="dash-tab w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition hover:bg-gray-50 text-gray-600">
+                <i class="fa-regular fa-user w-5"></i> Profile
+              </button>
+              <hr class="my-2">
+              <a href="login.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-left font-medium transition hover:bg-red-50 text-red-500">
+                <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── Main Content ─── -->
+        <div class="lg:col-span-3">
+
+          <!-- ════ DASHBOARD OVERVIEW ════ -->
+          <div id="tab-overview" class="dash-content">
+
+            <!-- Welcome -->
+            <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-gray-100 mb-6">
+              <h1 class="text-2xl lg:text-3xl font-extrabold text-gray-900">Welcome back, Tabassum! 👋</h1>
+              <p class="text-gray-500 mt-2">Here's what's happening with your account today.</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                <div class="w-10 h-10 bg-primary-50 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-box text-primary-600"></i>
+                </div>
+                <p class="text-2xl font-extrabold text-gray-900 mt-3">12</p>
+                <p class="text-gray-500 text-sm">Total Orders</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                <div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-clock text-yellow-600"></i>
+                </div>
+                <p class="text-2xl font-extrabold text-gray-900 mt-3">2</p>
+                <p class="text-gray-500 text-sm">Pending</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                <div class="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center">
+                  <i class="fa-solid fa-circle-check text-green-600"></i>
+                </div>
+                <p class="text-2xl font-extrabold text-gray-900 mt-3">9</p>
+                <p class="text-gray-500 text-sm">Delivered</p>
+              </div>
+              <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                <div class="w-10 h-10 bg-pink-50 rounded-full flex items-center justify-center">
+                  <i class="fa-regular fa-heart text-pink-600"></i>
+                </div>
+                <p class="text-2xl font-extrabold text-gray-900 mt-3">5</p>
+                <p class="text-gray-500 text-sm">Wishlist</p>
+              </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+              <div class="p-5 lg:p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="font-bold text-xl">Recent Orders</h2>
+                <button onclick="switchTab('orders')" class="text-primary-600 hover:text-primary-700 text-sm font-medium">View All →</button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead class="bg-gray-50 text-gray-500">
+                    <tr>
+                      <th class="text-left p-4 font-medium">Order ID</th>
+                      <th class="text-left p-4 font-medium">Date</th>
+                      <th class="text-left p-4 font-medium">Status</th>
+                      <th class="text-left p-4 font-medium">Total</th>
+                      <th class="text-right p-4 font-medium">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-100">
+                    <tr class="hover:bg-gray-50 transition">
+                      <td class="p-4 font-medium text-primary-600">#TF-2506</td>
+                      <td class="p-4 text-gray-600">Jan 15, 2026</td>
+                      <td class="p-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Delivered</span></td>
+                      <td class="p-4 font-medium">৳2,480</td>
+                      <td class="p-4 text-right"><a href="#" class="text-primary-600 hover:underline text-sm">View</a></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                      <td class="p-4 font-medium text-primary-600">#TF-2505</td>
+                      <td class="p-4 text-gray-600">Jan 10, 2026</td>
+                      <td class="p-4"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Processing</span></td>
+                      <td class="p-4 font-medium">৳1,190</td>
+                      <td class="p-4 text-right"><a href="#" class="text-primary-600 hover:underline text-sm">View</a></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                      <td class="p-4 font-medium text-primary-600">#TF-2504</td>
+                      <td class="p-4 text-gray-600">Dec 28, 2025</td>
+                      <td class="p-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Delivered</span></td>
+                      <td class="p-4 font-medium">৳3,480</td>
+                      <td class="p-4 text-right"><a href="#" class="text-primary-600 hover:underline text-sm">View</a></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                      <td class="p-4 font-medium text-primary-600">#TF-2503</td>
+                      <td class="p-4 text-gray-600">Dec 20, 2025</td>
+                      <td class="p-4"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">Cancelled</span></td>
+                      <td class="p-4 font-medium">৳690</td>
+                      <td class="p-4 text-right"><a href="#" class="text-primary-600 hover:underline text-sm">View</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="grid sm:grid-cols-3 gap-4">
+              <a href="shop.html" class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition flex items-center gap-4">
+                <div class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center">
+                  <i class="fa-solid fa-cart-plus text-primary-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold">Shop Now</h3>
+                  <p class="text-gray-400 text-sm">Browse new arrivals</p>
+                </div>
+              </a>
+              <a href="contact.html" class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition flex items-center gap-4">
+                <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
+                  <i class="fa-solid fa-headset text-green-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold">Get Support</h3>
+                  <p class="text-gray-400 text-sm">24/7 customer care</p>
+                </div>
+              </a>
+              <a href="return-policy.html" class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+                  <i class="fa-solid fa-rotate-left text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold">Returns</h3>
+                  <p class="text-gray-400 text-sm">Easy return policy</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- ════ ORDERS ════ -->
+          <div id="tab-orders" class="dash-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div class="p-5 lg:p-6 border-b border-gray-100">
+                <h2 class="font-bold text-xl">My Orders</h2>
+                <p class="text-gray-500 text-sm mt-1">Track and manage your orders</p>
+              </div>
+
+              <!-- Order Filters -->
+              <div class="p-4 border-b border-gray-100 flex flex-wrap gap-2">
+                <button onclick="filterOrders(this, 'all')" class="order-filter px-4 py-1.5 bg-primary-600 text-white rounded-full text-xs font-medium transition">All</button>
+                <button onclick="filterOrders(this, 'processing')" class="order-filter px-4 py-1.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-xs font-medium transition">Processing</button>
+                <button onclick="filterOrders(this, 'shipped')" class="order-filter px-4 py-1.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-xs font-medium transition">Shipped</button>
+                <button onclick="filterOrders(this, 'delivered')" class="order-filter px-4 py-1.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-xs font-medium transition">Delivered</button>
+                <button onclick="filterOrders(this, 'cancelled')" class="order-filter px-4 py-1.5 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full text-xs font-medium transition">Cancelled</button>
+              </div>
+
+              <div class="divide-y divide-gray-100">
+                <!-- Order 1 -->
+                <div class="p-5 lg:p-6 hover:bg-gray-50 transition">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div class="flex items-center gap-3">
+                        <span class="font-bold text-primary-600">#TF-2506</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Delivered</span>
+                      </div>
+                      <p class="text-gray-500 text-sm mt-1">Jan 15, 2026 • 3 items • ৳2,480</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <a href="order-success.html" class="text-primary-600 hover:underline text-sm font-medium">View Details</a>
+                      <a href="product-detail.html?id=4" class="border border-gray-200 px-4 py-1.5 rounded-full text-sm hover:border-primary-600 transition">Buy Again</a>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 mt-3">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                  </div>
+                </div>
+                <!-- Order 2 -->
+                <div class="p-5 lg:p-6 hover:bg-gray-50 transition">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div class="flex items-center gap-3">
+                        <span class="font-bold text-primary-600">#TF-2505</span>
+                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-medium">Processing</span>
+                      </div>
+                      <p class="text-gray-500 text-sm mt-1">Jan 10, 2026 • 1 item • ৳1,190</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <a href="order-success.html" class="text-primary-600 hover:underline text-sm font-medium">Track Order</a>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 mt-3">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                  </div>
+                </div>
+                <!-- Order 3 -->
+                <div class="p-5 lg:p-6 hover:bg-gray-50 transition">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div class="flex items-center gap-3">
+                        <span class="font-bold text-primary-600">#TF-2504</span>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">Delivered</span>
+                      </div>
+                      <p class="text-gray-500 text-sm mt-1">Dec 28, 2025 • 2 items • ৳3,480</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <a href="order-success.html" class="text-primary-600 hover:underline text-sm font-medium">View Details</a>
+                      <a href="product-detail.html?id=4" class="border border-gray-200 px-4 py-1.5 rounded-full text-sm hover:border-primary-600 transition">Buy Again</a>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 mt-3">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                  </div>
+                </div>
+                <!-- Order 4 -->
+                <div class="p-5 lg:p-6 hover:bg-gray-50 transition">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div class="flex items-center gap-3">
+                        <span class="font-bold text-primary-600">#TF-2503</span>
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-medium">Cancelled</span>
+                      </div>
+                      <p class="text-gray-500 text-sm mt-1">Dec 20, 2025 • 1 item • ৳690</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <a href="shop.html" class="text-primary-600 hover:underline text-sm font-medium">Reorder</a>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 mt-3">
+                    <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6c8?w=60&q=80" class="w-10 h-10 object-cover rounded-lg">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ WISHLIST ════ -->
+          <div id="tab-wishlist" class="dash-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div class="p-5 lg:p-6 border-b border-gray-100">
+                <h2 class="font-bold text-xl">My Wishlist ❤️</h2>
+                <p class="text-gray-500 text-sm mt-1">5 items saved for later</p>
+              </div>
+              <div class="divide-y divide-gray-100">
+                <div class="p-4 lg:p-5 flex items-center gap-4 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=80&q=80" class="w-16 h-16 object-cover rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-bold">Floral Summer Dress</h3>
+                    <p class="text-primary-600 font-bold">৳1,290</p>
+                  </div>
+                  <a href="cart.html" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition shrink-0">Add to Cart</a>
+                </div>
+                <div class="p-4 lg:p-5 flex items-center gap-4 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=80&q=80" class="w-16 h-16 object-cover rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-bold">Cotton Crop Top</h3>
+                    <p class="text-primary-600 font-bold">৳590</p>
+                  </div>
+                  <a href="cart.html" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition shrink-0">Add to Cart</a>
+                </div>
+                <div class="p-4 lg:p-5 flex items-center gap-4 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=80&q=80" class="w-16 h-16 object-cover rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-bold">Classic Fit Polo Shirt</h3>
+                    <p class="text-primary-600 font-bold">৳1,190</p>
+                  </div>
+                  <a href="cart.html" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition shrink-0">Add to Cart</a>
+                </div>
+                <div class="p-4 lg:p-5 flex items-center gap-4 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&q=80" class="w-16 h-16 object-cover rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-bold">Premium Cotton Hoodie</h3>
+                    <p class="text-primary-600 font-bold">৳1,890</p>
+                  </div>
+                  <a href="cart.html" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition shrink-0">Add to Cart</a>
+                </div>
+                <div class="p-4 lg:p-5 flex items-center gap-4 hover:bg-gray-50 transition">
+                  <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=80&q=80" class="w-16 h-16 object-cover rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="font-bold">Printed Midi Dress</h3>
+                    <p class="text-primary-600 font-bold">৳1,490</p>
+                  </div>
+                  <a href="cart.html" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition shrink-0">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ ADDRESSES ════ -->
+          <div id="tab-addresses" class="dash-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div class="p-5 lg:p-6 border-b border-gray-100 flex items-center justify-between">
+                <div>
+                  <h2 class="font-bold text-xl">My Addresses</h2>
+                  <p class="text-gray-500 text-sm mt-1">Manage your shipping addresses</p>
+                </div>
+                <button onclick="alert('Add new address form would open here')" class="bg-primary-600 hover:bg-primary-700 text-white px-5 py-2.5 rounded-full text-sm font-medium transition flex items-center gap-2">
+                  <i class="fa-solid fa-plus"></i> Add New
+                </button>
+              </div>
+              <div class="p-5 lg:p-6 grid sm:grid-cols-2 gap-4">
+                <div class="border-2 border-primary-200 rounded-2xl p-5 bg-primary-50/50">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <h3 class="font-bold">Home</h3>
+                      <p class="text-gray-600 text-sm mt-2">123, Gulshan Avenue<br>Dhaka-1212, Bangladesh</p>
+                      <p class="text-gray-500 text-sm mt-2">📞 +880 1700-000000</p>
+                    </div>
+                    <span class="bg-primary-600 text-white text-xs px-2 py-0.5 rounded-full">Default</span>
+                  </div>
+                  <div class="flex gap-3 mt-4 text-sm">
+                    <button class="text-primary-600 hover:underline">Edit</button>
+                    <button class="text-red-500 hover:underline">Delete</button>
+                  </div>
+                </div>
+                <div class="border border-gray-200 rounded-2xl p-5 hover:shadow-sm transition">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <h3 class="font-bold">Office</h3>
+                      <p class="text-gray-600 text-sm mt-2">456, Banani Road<br>Dhaka-1213, Bangladesh</p>
+                      <p class="text-gray-500 text-sm mt-2">📞 +880 1800-000000</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-3 mt-4 text-sm">
+                    <button class="text-primary-600 hover:underline">Edit</button>
+                    <button class="text-red-500 hover:underline">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ PROFILE ════ -->
+          <div id="tab-profile" class="dash-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div class="p-5 lg:p-6 border-b border-gray-100">
+                <h2 class="font-bold text-xl">Profile Settings</h2>
+                <p class="text-gray-500 text-sm mt-1">Update your personal information</p>
+              </div>
+              <div class="p-5 lg:p-6">
+                <form onsubmit="event.preventDefault(); alert('✅ Profile updated successfully!');">
+                  <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">First Name</label>
+                      <input type="text" value="Tabassum" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">Last Name</label>
+                      <input type="text" value="Fariha" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">Email</label>
+                      <input type="email" value="tabassum@email.com" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">Phone</label>
+                      <input type="tel" value="+880 1700-000000" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                  </div>
+                  <hr class="my-6">
+                  <h3 class="font-bold text-lg mb-4">Change Password</h3>
+                  <div class="grid sm:grid-cols-3 gap-5">
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">Current Password</label>
+                      <input type="password" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">New Password</label>
+                      <input type="password" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium mb-1.5">Confirm Password</label>
+                      <input type="password" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-primary-600 focus:outline-none transition">
+                    </div>
+                  </div>
+                  <button type="submit" class="mt-6 bg-primary-600 hover:bg-primary-700 text-white px-10 py-3 rounded-full font-bold transition">Save Changes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 lg:pt-20 pb-8">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div class="col-span-2 md:col-span-3 lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-1">
+            <span class="text-3xl font-extrabold text-primary-500">Tabassum</span>
+            <span class="text-3xl font-extrabold text-white">Fashion</span>
+          </a>
+          <p class="text-gray-400 mt-4 max-w-sm leading-relaxed">বাংলাদেশের সেরা ফ্যাশন ব্র্যান্ড। প্রিমিয়াম কোয়ালিটির টি-শার্ট, পোলো, শার্ট — সব এক জায়গায়। গ্রাহক সন্তুষ্টিই আমাদের মূল লক্ষ্য।</p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-sky-500 rounded-full flex items-center justify-center transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">SHOP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="shop.html" class="hover:text-white transition">All Products</a></li>
+            <li><a href="shop.html?category=tshirt" class="hover:text-white transition">T-Shirts</a></li>
+            <li><a href="shop.html?category=polo" class="hover:text-white transition">Polo Shirts</a></li>
+            <li><a href="shop.html?category=panjabi" class="hover:text-white transition">Panjabi</a></li>
+            <li><a href="shop.html?category=women" class="hover:text-white transition">Women</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">ACCOUNT</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="login.html" class="hover:text-white transition">Login</a></li>
+            <li><a href="register.html" class="hover:text-white transition">Register</a></li>
+            <li><a href="login.html" class="hover:text-white transition">My Orders</a></li>
+            <li><a href="login.html" class="hover:text-white transition">Wishlist</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-widest uppercase text-gray-300 mb-6">HELP</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+            <li><a href="return-policy.html" class="hover:text-white transition">Return Policy</a></li>
+            <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Tabassum Fashion. Made with <i class="fa-solid fa-heart text-red-500"></i> in Bangladesh</p>
+        <div class="flex items-center gap-3 text-gray-400">
+          <span class="text-sm">We Accept:</span>
+          <i class="fa-brands fa-cc-visa text-2xl"></i>
+          <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+          <span class="text-xl font-bold text-green-500">bKash</span>
+          <span class="text-xl font-bold text-pink-500">Nagad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Mobile Menu ───
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.toggle('fa-xmark');
+      });
+    }
+
+    // ─── Cart System ───
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() {
+      const badge = document.getElementById('cartCount');
+      if (badge) badge.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+    updateCartCount();
+
+    // ─── Dashboard Tab Switching ───
+    function switchTab(tab) {
+      // Hide all content
+      document.querySelectorAll('.dash-content').forEach(c => c.classList.add('hidden'));
+      // Show selected tab
+      const target = document.getElementById('tab-' + tab);
+      if (target) target.classList.remove('hidden');
+
+      // Update sidebar active state using data-tab attributes
+      document.querySelectorAll('.dash-tab').forEach(t => {
+        t.classList.remove('bg-primary-50', 'text-primary-600');
+        t.classList.add('text-gray-600');
+      });
+      const activeBtn = document.querySelector(`.dash-tab[data-tab="${tab}"]`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-gray-600');
+        activeBtn.classList.add('bg-primary-50', 'text-primary-600');
+      }
+    }
+
+    // ─── Order Filter ───
+    function filterOrders(btn, status) {
+      document.querySelectorAll('.order-filter').forEach(b => {
+        b.classList.remove('bg-primary-600', 'text-white');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+      });
+      btn.classList.remove('bg-gray-100', 'text-gray-600');
+      btn.classList.add('bg-primary-600', 'text-white');
+
+      document.querySelectorAll('#tab-orders .divide-y > div').forEach(order => {
+        if (status === 'all') {
+          order.classList.remove('hidden');
+        } else {
+          const badge = order.querySelector('.rounded-full.text-xs.font-medium');
+          if (badge && badge.textContent.toLowerCase() === status) {
+            order.classList.remove('hidden');
+          } else {
+            order.classList.add('hidden');
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
